@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Rubik:wght@500&family=Shadows+Into+Light&display=swap');
+
+.con{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    background-image: linear-gradient(to bottom right, rgb(37, 53, 237) , rgb(195, 202, 210));
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    border-radius: 30px;
+}
+
+.dictForm{
+    width: 70%;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px 10px;
+    background-image: linear-gradient(to bottom right, rgb(165, 164, 249) , rgb(197, 197, 216));
+}
+
+.addWord{
+    width: 40%;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin: 20px;
+}
+.button{
+    font-size: 25px;
+    border-radius: 6px;
+    margin: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    color: rgb(1, 1, 147);
+    box-shadow: rgba(29, 6, 202, 0.35) 0px 5px 15px;
+    background-color: rgb(187, 128, 11);
+}
+
+.board{
+    width: 60%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    background-image: linear-gradient(to bottom right, rgb(37, 53, 237) , rgb(195, 202, 210));
+    border-radius: 20px;
+    box-shadow: rgba(29, 3, 99, 0.35) 0px 5px 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sheading{
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+}
+
+.font{
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-element{
+    margin: 3px 6px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.wd{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 30px;
+    display: block;
+}

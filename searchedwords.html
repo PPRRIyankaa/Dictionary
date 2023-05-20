@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="sheading">Here is the track of the Searched words: </h1>
+    <script>
+        fetch("http://localhost:8000/searchedwords").then(async (response) => {
+            response = response.json();
+            response = await response;
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            response.map(async (response) => {
+                const srchWord = response.word;
+
+                const board = document.createElement('div');
+                board.classList.add('board');
+
+                const word = document.createElement('a');
+                word.innerHTML = response.word;
+                word.classList.add('font');
+                word.classList.add('wd');
+                word.target = '_blank'
+                board.appendChild(word);
+
+                const defButton = document.createElement('button')
+                defButton.innerHTML = "Definations";
+                defButton.classList.add('button')
+                board.appendChild(defButton);
+
+                const synButton = document.createElement('button')
+                synButton.innerHTML = "Synonyms";
+                synButton.classList.add('button')
+                board.appendChild(synButton);
+
+                const antButton = document.createElement('button')
+                antButton.innerHTML = "Antonyms";
+                antButton.classList.add('button')
+                board.appendChild(antButton);
+
+                const exButton = document.createElement('button')
+                exButton.innerHTML = "Example";
+                exButton.classList.add('button')
+                board.appendChild(exButton);
+
+                const time = document.createElement('p');
+                time.classList.add('font');
+                const date = new Date(response.updatedAt);
+                time.innerHTML = date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + " and at " + date.getHours() + ":" + date.getMinutes();
+                board.appendChild(time);
+
+                const searchCount = document.createElement('p');
+                searchCount.classList.add('font');
+                searchCount.innerHTML = "Number of search counts are: " + response.count;
+                board.appendChild(searchCount);
+
+                const content = document.createElement('div');
+                content.classList.add('font');
+                board.appendChild(content);
+
+                document.body.appendChild(board);
+
+                const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${srchWord}`;
+                await fetch(url).then(async (res) => {
+                    const defi = [],
+                        syn = [],
+                        ant = [],
+                        ex = [];
+                    res = await res.json();
+                    res = res[0];
+                    if (res == undefined) return;
+                    res.meanings.map((e) => {
+                        console.log(e)
+                        if (e.synonyms !== undefined && e.synonyms.length !== 0)
+                            e.synonyms.map((element) => syn.push(element));
+                        if (e.antonyms !== undefined && e.antonyms.length !== 0)
+                            e.antonyms.map((element) => ant.push(element));
+                        e.definitions.map((ele) => {
+                            if (ele.definition.length !== 0)
+                                defi.push(ele.definition);
+                            if (ele.synonyms.length !== 0)
+                                ele.synonyms.map((element) => syn.push(element));
+                            if (ele.antonyms.length !== 0)
+                                ele.antonyms.map((element) => ant.push(element));
+                            if (ele.example?.length !== 0)
+                                ex.push(ele.example);
+                            })
+                        });
+                        word.href = res.sourceUrls[0];
+                        if (defi.length > 0) {
+                            defButton.addEventListener('click', () => {
+                                console.log(defButton);
+                                content.innerHTML = "<h4>Here are the definations: </h4> <ul>";
+                                defi.map((element) => {
+                                    content.innerHTML += `<li>${element}</li>`
+                                })
+                                content.innerHTML += "</ul>"
+                            })
+                        }
+                        else {
+                            defButton.style.display = 'none';
+                        }
+                        if (syn.length > 0) {
+                            synButton.addEventListener('click', () => {
+                                console.log(syn);
+                                content.innerHTML = "<h4>Here are the synonyms: </h4> <ul>";
+                                syn.map((element) => {
+                                    console.log(element)
+                                    content.innerHTML += `<li>${element}</li>`
+                                })
+                                content.innerHTML += "</ul>"
+                            })
+                        }
+                        else {
+                            synButton.style.display = 'none';
+                        }
+                        if (ant.length > 0) {
+                            console.log(ant);
+                            antButton.addEventListener('click', () => {
+                                content.innerHTML = "<h4>Here are the antonyms: </h4> <ul>";
+                                ant.map((element) => {
+                                    content.innerHTML += `<li>${element}</li>`
+                                })
+                                content.innerHTML += "</ul>"
+                            })
+                        }
+                        else {
+                            antButton.style.display = 'none';
+                        }
+                        if (ex.length > 0) {
+                            console.log(ex)
+                            exButton.addEventListener('click', () => {
+                                content.innerHTML = "<h4>Here are the Examples: </h4> <ul>";
+                                ex.map((element) => {
+                                    content.innerHTML += `<li>${element}</li>`
+                                })
+                                content.innerHTML += "</ul>"
+                            })
+                        }
+                        else {
+                            exButton.style.display = 'none';
+                        }
+                    })
+                })
+            })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar navbar-dark bg-secondary">
+    <div class="container-fluid">
+      <div
+        class="collapse navbar-collapse justify-content-center "
+        id="navbarCenteredExample"
+      >
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active nav-element" aria-current="page" href="#">Dictionary             
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-element" href="/searchedwords.html">SearchedWords</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+      <div class="con">
+        <h1 style="text-align: center;">Search for any word in the Dictionary</h1>
+        <div class="block dictForm">
+        <label for="word"><h2>Enter the word you want to search</h2></label>
+        <input type="text" id="word" class="addWord">
+        <button id="search" class="button" >Search</button>
+      </div>
+      <div class="block">
+        <h2>Results:</h2>
+        <h2 style="margin-bottom: 20px;">You searched for the words: <span id="shbad"></span></h2>
+        <p id="defination"></p>
+
+        <p id="synonyms"></p>
+
+        <p id="antonyms"></p>
+        <p id="example"></p>
+        <p id="notFound"></p>
+
+      </div>
+      </div>
+      <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
